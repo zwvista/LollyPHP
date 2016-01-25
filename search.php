@@ -16,7 +16,8 @@ try {
 		$stmt->execute();
 		$dictlist = $stmt->fetchAll();
 		foreach($dictlist as $dict) {
-			echo $dict['URL'];
+			$url = str_replace('{0}', $word, $dict['URL']);
+			header('Location:' . $url);
 		}
 	}
 } catch(PDOException $e) {
