@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $db = new PDO('sqlite:Lolly.db');
+    $db = new PDO('sqlite:../Lolly.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $langid = intval($_POST['selectedLangID']);
     $stmt = $db->prepare("SELECT * FROM DICTALL WHERE LANGID = :langid");
