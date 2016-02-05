@@ -14,10 +14,8 @@ try {
 		$stmt->bindParam(":langid", $langid);
 		$stmt->bindParam(":dictname", $dictname);
 		$stmt->execute();
-		$dictlist = $stmt->fetchAll();
-		foreach($dictlist as $dict) {
-			echo $dict['URL'];
-		}
+		$dict = $stmt->fetch();
+		echo $dict['URL'];
 	}
 } catch(PDOException $e) {
     echo $e->getMessage();

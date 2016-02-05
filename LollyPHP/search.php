@@ -14,11 +14,9 @@ try {
 		$stmt->bindParam(":langid", $langid);
 		$stmt->bindParam(":dictname", $dictname);
 		$stmt->execute();
-		$dictlist = $stmt->fetchAll();
-		foreach($dictlist as $dict) {
-			$url = str_replace('{0}', $word, $dict['URL']);
-			header('Location:' . $url);
-		}
+		$dict = $stmt->fetch();
+		$url = str_replace('{0}', $word, $dict['URL']);
+		header('Location:' . $url);
 	}
 } catch(PDOException $e) {
     echo $e->getMessage();

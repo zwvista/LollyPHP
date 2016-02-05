@@ -16,7 +16,7 @@ class LollyController extends AppController
 	{
 		$this->autoRender = false;
 		$langid = $this->request->data('selectedLangID');
-		$dictList = TableRegistry::get('Dictall')->find()->where('LANGID = ' . $langid)->all();
+		$dictList = TableRegistry::get('Dictall')->find()->where(['LANGID' => $langid])->all();
 		foreach($dictList as $dict) {
 	    	echo '<option>' . $dict['DICTNAME'] . '</option>';
 	    }
@@ -28,11 +28,20 @@ class LollyController extends AppController
 		$langid = $this->request->data('selectedLangID');
 		$dictname = $this->request->data('selectedDictName');
 		$word = $this->request->data('word');
-		$dictList = TableRegistry::get('Dictall')->find()
-			->where('LANGID = ' . $langid)
-			->andWhere("DICTNAME = '$dictname'")->all();
-		foreach($dictList as $dict) {
-	    	echo $dict['URL'];
-	    }
+		$dict = TableRegistry::get('Dictall')->find()
+			->where(['LANGID' => $langid, ['DICTNAME' => $dictname]])->first();
+    	echo $dict['URL'];
+	}
+	
+	public function search()
+	{
+		$this->autoRender = false;
+		$langid = $this->request->data('selectedLangID');
+		$dictname = $this->request->data('selectedDictName');
+		$word = $this->request->data('word');
+		$dict = TableRegistry::get('Dictall')->find()
+			->where(['LANGID' => $langid, ['DICTNAME' => $dictname]])->first();
+		$url = str_replace('{0}', $word, $dict['URL']);
+		$this->redirect($url);
 	}
 }

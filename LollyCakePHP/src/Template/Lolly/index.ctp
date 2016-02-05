@@ -7,7 +7,7 @@
 <title>CakePHP - Lolly</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/lolly/lolly.css">
+    <?= $this->Html->css('lolly.css') ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script>
@@ -49,7 +49,7 @@ $(function() {
 </script>
 </head>
 <body>
-<form class="form-horizontal" method="post" action='search.php'>
+<form class="form-horizontal" method="post" action='/lolly/search'>
     <div class="form-group">
         <label class="col-sm-1 control-label" for='lang'>Language:</label>
         <div class="col-sm-3">
