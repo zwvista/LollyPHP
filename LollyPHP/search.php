@@ -6,7 +6,7 @@ try {
 		http_response_code(404);
 		echo "Word is required.";
 	} else {
-		$db = new PDO('sqlite:Lolly.db');
+		$db = new PDO('sqlite:../Lolly.db');
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$langid = intval($_POST['selectedLangID']);
 		$dictname = $_POST['selectedDictName'];
