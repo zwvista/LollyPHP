@@ -58,7 +58,7 @@ $(function() {
     	<div class="col-sm-3">
 			<select class="form-control" name="selectedLangID" id="lang" >
 				<?php foreach($langlist as $lang) { ?>
-					<option value="<?php echo $lang['LANGID'] ?>">
+					<option value="<?php echo $lang['ID'] ?>">
 						<?php echo $lang['LANGNAME'] ?>
 					</option>
 				<?php } ?>
